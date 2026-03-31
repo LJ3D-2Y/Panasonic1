@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Leadership Principles</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f9f9f9;
+      margin: 0;
+      padding: 40px;
+      text-align: justify;
+
+    }
+    .logo {
+      margin-bottom: 10px;
+    }
+    .logo img {
+      width: 300px;
+      max-width: 100%;
+      height: auto;
+      display: block;
+      margin: 0 auto;
+    }
+    .heading {
+      font-size: 20px;
+      font-weight: bold;
+      color: #666;
+      margin-bottom: 30px;
+      text-align: center;
+
+    }
+    .principles {
+      display: grid;
+      max-width: 374px;
+      margin: 0 auto;
+      gap: 10px;
+    }
+    .principle {
+      background-color: #fff;
+      border: 1px solid #ddd;
+      border-radius: 6px;
+      padding: 20px;
+      font-size: 16px;
+      font-weight: bold;
+      color: #333;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      text-align: left;
+      box-shadow: #333;
+    }
+    .info-icon {
+      font-size: 18px;
+      color: #005BAC;
+      cursor: pointer;
+    }
+    /* Popup Modal Styles */
+    .popup {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(15, 11, 11, 0.5);
+      z-index: 1000;
+      justify-content: center;
+      align-items: center;
+    }
+    .popup-content {
+      background-color: #fff;
+      border-radius: 1px;
+      padding: 20px;
+      max-width: 400px;
+      width: 90%;
+      max-height: 80vh;
+      overflow-y: auto;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+      border-radius: 10px;
+
+    }
+    .popup-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 15px;
+      border-bottom: 1px solid #43424236;
+      padding-bottom: 10px;
+    }
+    .popup-title {
+      font-size: 20px;
+      font-weight: bold;
+      color: #005BAC;
+      margin: 0;
+    }
+    .close-btn {
+      background: none;
+      font-size: 24px;
+      cursor: pointer;
+      color: #000000;
+      border: none;
+    }
+    .close-btn:hover {
+      color: #000000;
+    }
+    .popup-body {
+      color: #000000;
+      line-height: 1.6;
+    }
+
+     .ok-btn {
+      background-color: #ffffff; /* Green */
+      color: rgb(0, 0, 0);
+      padding: 10px 20px;
+      text-align: center;
+      font-size: 16px;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+
+    }
+
+    .ok-btn:hover {
+      background-color: #dce0dc; /* Slightly darker green on hover */
+    }
+    .popup-footer {
+    display: flex;
+    justify-content: center; /* Centers the button horizontally */
+    margin-top: 15px;
+  }
+  </style>
+</head>
+<body>    
+  <div class="logo">
+    <img src="Panasonic-logo.png" alt="Panasonic logo">
+  </div>
+  <div class="heading">L E A D E R S H I P   P R I N C I P L E S</div>
+  
+  <div class="principles">
+    <div class="principle">CUSTOMER FOCUS <span class="info-icon">ℹ️</span></div>
+    <div class="principle">DRIVES VISION <span class="info-icon">ℹ️</span></div>
+    <div class="principle">BUILDS TRUST <span class="info-icon">ℹ️</span></div>
+    <div class="principle">STRATEGIC THINKING AND BEHAVIOR <span class="info-icon">ℹ️</span></div>
+    <div class="principle">BEST WORK PROCESSES <span class="info-icon">ℹ️</span></div>
+    <div class="principle">OWNERSHIP <span class="info-icon">ℹ️</span></div>
+    <div class="principle">EVOLUTION <span class="info-icon">ℹ️</span></div>
+    <div class="principle">HARMONIZES WISDOM <span class="info-icon">ℹ️</span></div>
+    <div class="principle">WELCOMES UNIQUENESS AND DIFFERENCES <span class="info-icon">ℹ️</span></div>
+    <div class="principle">PEOPLE FIRST <span class="info-icon">ℹ️</span></div>
+    <div class="principle">DRIVES RESULTS <span class="info-icon">ℹ️</span></div>
+  </div>
+
+  <!-- Popup Modal -->
+<div id="popup" class="popup">
+  <div class="popup-content">
+    <div class="popup-header">
+      <h3 id="popup-title" class="popup-title"></h3>
+      <button class="close-btn" onclick="closePopup()">&times;</button>
+    </div>
+    <div id="popup-body" class="popup-body"></div>
+    <div class="popup-footer">
+      <button class="ok-btn" onclick="closePopup()">Okay</button>
+    </div>
+  </div>
+
+  <script>
+    // Principle information
+    const principleInfo = {
+      'CUSTOMER FOCUS': {
+        title: 'Customer Focus',
+        description: 'We shall always think from a customers perspective. In order to keep customers happy, we will deeply understand the potential problems that they have yet to identify, look ahead to their ideal future, and continue to take actions that far exceed their expectations.'
+      },
+      'DRIVES VISION': {
+        title: 'Drives Vision',
+        description: 'Without being bound by the status quo, we shall boldly envision our ideal future beyond the imagination of others around us. Even if it seems difficult, we will never give up and work toward the achievement of an ideal future while exploring all the possibilities.'
+      },
+      'BUILDS TRUST': {
+        title: 'Builds Trust',
+        description: 'With the awareness that we are members of society, we will gain trust by acting in good faith without arrogance. We shall not neglect even the smallest details and always do what is right for society in mind. Moreover, we will humbly learn from all affiliates, cooperate with them, and enhance each other through respectful dialogue, aiming to achieve social progress.'
+      },
+      'STRATEGIC THINKING AND BEHAVIOR': {
+        title: 'Strategic Thinking and Behavior',
+        description: 'We shall detect signs of change without being preoccupied with the matters at hand, thereby seeing the big picture of society and thinking flexibly. We will not make rash decisions or take a short-sighted approach such as thinking about actions to be taken based on the status quo, and will always promote and practice mid- to long-term thinking. We will open up new business opportunities by always taking interest in social and technological progress and by evaluating and honing our skills, which will serve as our strengths in an endeavor to keep ahead of changes.'
+      },
+      'BEST WORK PROCESSES': {
+        title: 'Best Work Processes',
+        description: 'Without being satisfied with the status quo, we shall promote the visible measurement of productivity in all situations, thoroughly pursue such an effort, and achieve results, which will always make us proud that our work offers the worlds best quality. To this end, we will consider the status quo as a decline and continue to boldly improve any unsatisfactory work processes without hesitation.'
+      },
+      'OWNERSHIP': {
+        title: 'Ownership',
+        description: 'No matter how menial our tasks may seem, we will be aware that we are the managers of our own jobs and act accordingly. We will find meaning in each task and never say, "Thats not my job." We will continue to act with a sense of autonomy for our happiness and that of the organization as well as the well-being of all individuals concerned.'
+      },
+      'EVOLUTION': {
+        title: 'Evolution',
+        description: 'We will not depend on our current capabilities and experience, but will continue to expand our horizons, learn, and change. Instead of being bound by convention and making excuses about why we cannot pursue these objectives, we will explore ways to achieve them. We will become challengers rather than bystanders or critics and support the challenges of others around us.'
+      },
+      'HARMONIZES WISDOM': {
+        title: 'Harmonizes Wisdom',
+        description: 'In order to create more wisdom, we shall listen to other parties opinions with an open mind and say what needs to be said with respect for them. We will promote rapid and optimal decision-making without fear of disagreement with others.'
+      },
+      'WELCOMES UNIQUENESS AND DIFFERENCES': {
+        title: 'Welcomes Uniqueness and Differences',
+        description: 'We shall consider differences as strengths, and welcome diversity and use it to our advantage to create new value. We will become aware of our preconceptions and biased views and promote fair decision-making independent of such ways of thinking.'
+      },
+      'PEOPLE FIRST': {
+        title: 'People First',
+        description: 'We shall explore and achieve an ideal state through daily practice and humble reflection. We will not force our opinions and methods on team members, but believe in their potential and fully trust them to do a job. When performing tasks, we will make it a top priority to ensure the health and safety of ourselves and team members. We will look after and help each other to establish a pleasant work environment for all team members.'
+      },
+      'DRIVES RESULTS': {
+        title: 'Drives Results',
+        description: 'We shall be keenly aware of our roles and missions, and always confirm the goal to be achieved and the degree to which we have realized it. We will never overlook our behavior when it runs counter to our achievement. No matter how difficult the challenge we face, we will fearlessly take prompt action to ensure the achievement of results.'
+      },
+
+    };
+
+    // Add click event listeners to info icons
+    document.addEventListener('DOMContentLoaded', function() {
+      const infoIcons = document.querySelectorAll('.info-icon');
+      infoIcons.forEach(icon => {
+        icon.addEventListener('click', function() {
+          const principleText = this.parentElement.textContent.replace('ℹ️', '').trim();
+          showPopup(principleText);
+        });
+      });
+    });
+
+    function showPopup(principle) {
+      const info = principleInfo[principle];
+      if (info) {
+        document.getElementById('popup-title').textContent = info.title;
+        document.getElementById('popup-body').textContent = info.description;
+        document.getElementById('popup').style.display = 'flex';
+      }
+    }
+
+    function closePopup() {
+      document.getElementById('popup').style.display = 'none';
+    }
+
+    // Close popup when clicking outside
+    document.getElementById('popup').addEventListener('click', function(e) {
+      if (e.target === this) {
+        closePopup();
+      }
+    });
+  </script>
+</body>
+</html>
